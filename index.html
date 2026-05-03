@@ -181,40 +181,66 @@ height:70px;
 
 /* 2. Updated Hero Section */
 .hero {
-  width: 100vw; /* '100%' ki jagah '100vw' (viewport width) use karein */
-  height: 600px;
+  width: 100%;
+  /* Screen ke hisaab se height ko auto adjust hone de */
+  height: auto;
   min-height: 500px;
-  max-height: 100vh;
-  background-image: url("hero.jpeg");
-  background-size: cover !important; /* Image ko khinch kar poora fill karega */
+  /* Laptop par image poori dikhe isliye 90vh */
+  max-height: 90vh; 
+  
+  background-image: url("hero.jpg");
+  
+  /* 'contain' use karne se image kategi nahi, par sides me gap aa sakta hai */
+  /* 'cover' use karne par kategi. Isliye hum 'cover' ke saath position ko 50% rakhenge */
+  background-size: cover !important;
   background-position: center center;
   background-repeat: no-repeat;
-  background-color: #000;
+  
+  /* Image ke background se match karta dark color */
+  background-color: #2b1a0f; 
+  
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  left: 50%; /* Agar container chhota hai toh center karne ke liye */
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-} 
+  overflow: hidden;
+}
 
 .hero::after {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Halka gradient taaki background image aur aapka text dono clear rahein */
+  background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
   z-index: 1;
-  background: rgba(0,0,0,0.5);
 }
 
 .hero-content {
   position: relative;
+  z-index: 2;
   color: white;
   text-align: center;
-  z-index: 2;
-  padding: 0 20px; /* Mobile par text sides se na chipke */
+  /* Text ko thoda niche shift karne ke liye agar wo logo ke upar aa raha ho */
+  padding-top: 20px; 
 }
+
+/* Responsive Fix for Desktop */
+@media (min-width: 1024px) {
+  .hero {
+    /* Bade screens par image kafi katti hai, isliye height thodi kam rakhein */
+    height: 600px;
+  }
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .hero {
+    height: 400px;
+    /* Mobile par image ka focus center me rakhega */
+    background-size: cover;
+  }
 
 .stats {
   padding: 100px 20px !important;
