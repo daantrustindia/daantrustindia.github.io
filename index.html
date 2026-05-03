@@ -179,39 +179,41 @@ width:100px;
 height:70px;
 }
 
+/* 2. Updated Hero Section */
 .hero {
-  width:100%;
-  height: 500px;
+  width: 100vw; /* '100%' ki jagah '100vw' (viewport width) use karein */
+  height: 600px;
   min-height: 500px;
-  max-height: 90vh;
+  max-height: 100vh;
   background-image: url("hero.jpeg");
-  background-size: contain !important;
-  background-position: top center;
+  background-size: cover !important; /* Image ko khinch kar poora fill karega */
+  background-position: center center;
   background-repeat: no-repeat;
   background-color: #000;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  left: 50%; /* Agar container chhota hai toh center karne ke liye */
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 } 
 
-.hero::after{
-  content:"";
-  position:absolute;
+.hero::after {
+  content: "";
+  position: absolute;
   inset: 0;
   z-index: 1;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  background:rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.5);
 }
 
-.hero-content{
-  position:relative;
-  color:white;
-  text-align:center;
-  z-index:2;
+.hero-content {
+  position: relative;
+  color: white;
+  text-align: center;
+  z-index: 2;
+  padding: 0 20px; /* Mobile par text sides se na chipke */
 }
 
 .stats {
